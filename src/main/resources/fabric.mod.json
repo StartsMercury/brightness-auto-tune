@@ -16,9 +16,10 @@
 	"license": "MIT",
 	"icon": "assets/brightness-auto-tune/icon.png",
 
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
-		"main": [
+		"client": [
+			"com.github.startsmercury.brightnessautotune.entrypoint.BrightnessAutoTuneClientMod"
 		]
 	},
 	"mixins": [
