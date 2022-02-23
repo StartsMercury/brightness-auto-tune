@@ -19,7 +19,6 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.github.startsmercury.brightnessautotune.ExampleMod"
 		]
 	},
 	"mixins": [
