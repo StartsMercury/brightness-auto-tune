@@ -12,6 +12,15 @@ repositories {}
 
 dependencies {
 	/*
+	 * DataBreaker
+	 * 
+	 * Speeds up loading times.
+	 */
+	modRuntimeOnly 'supercoder79:databreaker:0.2.8', {
+		exclude module: 'fabric-loader'
+	}
+
+	/*
 	 * Fabric API.
 	 *
 	 * This is technically optional, but you probably want it anyway.
