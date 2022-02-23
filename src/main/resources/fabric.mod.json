@@ -1,29 +1,28 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "brightness-auto-tune",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Brightness Auto Tune",
+  "description": "Automatically adjusts in-game brightness dynamically!",
   "authors": [
-    "Me!"
+    "StartsMercury"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/StartsMercury/brightness-auto-tune"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "MIT",
+  "icon": "assets/brightness-auto-tune/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "con.github.startsmercury.brightnessautotune.ExampleMod"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "brightness-auto-tune.mixins.json"
   ],
 
   "depends": {

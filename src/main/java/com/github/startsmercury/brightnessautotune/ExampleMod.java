@@ -1,4 +1,4 @@
-package net.fabricmc.example;
+package com.github.startsmercury.brightnessautotune;
 
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
