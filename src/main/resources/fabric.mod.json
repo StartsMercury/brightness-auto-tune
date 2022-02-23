@@ -1,37 +1,37 @@
 {
-  "schemaVersion": 1,
-  "id": "brightness-auto-tune",
-  "version": "${version}",
+	"schemaVersion": 1,
+	"id": "brightness-auto-tune",
+	"version": "${version}",
 
-  "name": "Brightness Auto Tune",
-  "description": "Automatically adjusts in-game brightness dynamically!",
-  "authors": [
-    "StartsMercury"
-  ],
-  "contact": {
-    "sources": "https://github.com/StartsMercury/brightness-auto-tune"
-  },
+	"name": "Brightness Auto Tune",
+	"description": "Automatically adjusts in-game brightness dynamically!",
+	"authors": [
+		"StartsMercury"
+	],
+	"contact": {
+		"sources": "https://github.com/StartsMercury/brightness-auto-tune"
+	},
 
-  "license": "MIT",
-  "icon": "assets/brightness-auto-tune/icon.png",
+	"license": "MIT",
+	"icon": "assets/brightness-auto-tune/icon.png",
 
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "con.github.startsmercury.brightnessautotune.ExampleMod"
-    ]
-  },
-  "mixins": [
-    "brightness-auto-tune.mixins.json"
-  ],
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"con.github.startsmercury.brightnessautotune.ExampleMod"
+		]
+	},
+	"mixins": [
+		"brightness-auto-tune.mixins.json"
+	],
 
-  "depends": {
-    "fabricloader": ">=0.12.12",
-    "fabric": "*",
-    "minecraft": "1.18.x",
-    "java": ">=17"
-  },
-  "suggests": {
-    "another-mod": "*"
-  }
+	"depends": {
+		"fabricloader": ">=0.12.12",
+		"fabric": "*",
+		"minecraft": "1.18.x",
+		"java": ">=17"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
 }
