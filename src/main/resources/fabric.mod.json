@@ -10,6 +10,7 @@
 	],
 	"contact": {
 		"sources": "https://github.com/StartsMercury/brightness-auto-tune"
+		"issues": "https://github.com/StartsMercury/brightness-auto-tune/issues",
 	},
 
 	"license": "MIT",
