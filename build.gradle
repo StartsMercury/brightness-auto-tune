@@ -25,8 +25,8 @@ dependencies {
 	// Fabric Loader
 	modImplementation "net.fabricmc:fabric-loader:${loader_version}"
 
-	// Mappings - Yarn
-	mappings "net.fabricmc:yarn:${yarn_mappings}:v2"
+	// Mappings - Official Mojang Mappings
+	mappings loom.officialMojangMappings()
 
 	// Minecraft
 	minecraft "com.mojang:minecraft:${minecraft_version}"
