@@ -8,7 +8,9 @@ plugins {
 sourceCompatibility = VERSION_17
 targetCompatibility = VERSION_17
 
-repositories {}
+repositories {
+	maven { url 'https://maven.gegy.dev/' }
+}
 
 dependencies {
 	/*
