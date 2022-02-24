@@ -19,7 +19,9 @@ public class BrightnessAutoTuneClientMod implements ClientModInitializer {
 			final LocalPlayer player = client.player;
 
 			if (level != null && player != null) {
-				options.gamma = (15 - level.getRawBrightness(player.blockPosition().above(), 0)) / 15.0D;
+				final double newGamma = (15 - level.getRawBrightness(player.blockPosition().above(), 0)) / 15.0D;
+
+				options.gamma += (newGamma - options.gamma) / 10.0D;
 			} else {
 				options.gamma = 0.5D;
 			}
