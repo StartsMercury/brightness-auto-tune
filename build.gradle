@@ -9,19 +9,14 @@ sourceCompatibility = VERSION_17
 targetCompatibility = VERSION_17
 
 repositories {
+	maven { url 'https://api.modrinth.com/maven'; content { includeGroup 'maven.modrinth' } }
+	maven { url 'https://cursemaven.com'; content { includeGroup 'curse.maven' } }
+	maven { url 'https://jitpack.io' }
 	maven { url 'https://maven.gegy.dev/' }
 }
 
+// Standard Dependencies
 dependencies {
-	/*
-	 * DataBreaker
-	 * 
-	 * Speeds up loading times.
-	 */
-	modRuntimeOnly 'supercoder79:databreaker:0.2.8', {
-		exclude module: 'fabric-loader'
-	}
-
 	/*
 	 * Fabric API.
 	 *
@@ -37,6 +32,37 @@ dependencies {
 
 	// Minecraft
 	minecraft "com.mojang:minecraft:${minecraft_version}"
+}
+
+// Performant Dependencies
+dependencies {
+	// DynamicFPS
+	modRuntimeOnly 'maven.modrinth:dynamic-fps:v2.1.0'
+
+	// DataBreaker
+	modRuntimeOnly 'supercoder79:databreaker:0.2.8', {
+		exclude module: 'fabric-loader'
+	}
+
+	// FerriteCore
+	modRuntimeOnly 'curse.maven:ferritecore-459857:3550048'
+
+	// Lazy DFU
+	modRuntimeOnly 'com.github.astei:lazydfu:0.1.2', {
+		exclude module: 'fabric-loader'
+	}
+
+	// Lithium
+	modRuntimeOnly 'curse.maven:lithium-360438:3590908'
+
+	// Smooth Boot
+	modRuntimeOnly 'curse.maven:smoothboot-415758:3549723'
+
+	// Starlight
+	modRuntimeOnly 'curse.maven:starlight-521783:3554912'
+
+	// TOML
+	runtimeOnly 'com.moandjiezana.toml:toml4j:0.7.2'
 }
 
 processResources {
