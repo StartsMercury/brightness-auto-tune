@@ -22,6 +22,20 @@ What can I customize?
  3. `Least Brightness` - brightness to aproach when it is dark
  3. `Most Brightness` - brightness to aproach when it is bright
 
+Where is it saved?
+
+`.minecraft/config/brightness-auto-tune.json`
+
+Can I swap `Least` and `Most` brightness?
+
+Absolutely 100% YES!
+
+## Demonstration
+
+**NOTE:** Tune speed was set to `0.1` to make it more visible.
+
+https://user-images.githubusercontent.com/89975834/155703921-47b51508-0706-4cbb-b823-39febf14f73e.mp4
+
 ## License
 
 This is available under the MIT license.
