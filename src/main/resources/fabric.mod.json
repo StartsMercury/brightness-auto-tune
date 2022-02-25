@@ -4,7 +4,7 @@
 	"version": "${version}",
 
 	"name": "Brightness Auto Tune",
-	"description": "Automatically adjusts in-game brightness dynamically!",
+	"description": "Automatically tunes your in-game brightness (gamma) to fit your current sorroundings!",
 	"authors": [
 		"StartsMercury"
 	],
