@@ -1,0 +1,13 @@
+{
+	"brightness-auto-tune.config.main": "Basic",
+	"brightness-auto-tune.config.main.least_brightness": "Least Brightness",
+	"brightness-auto-tune.config.main.most_brightness": "Most Brightness",
+	"brightness-auto-tune.config.main.tune_brightness": "Tune Brightness",
+	"brightness-auto-tune.config.main.tune_brightness.false.tooltip.0": "Brightness won't change",
+	"brightness-auto-tune.config.main.tune_brightness.true.tooltip.0": "Brightness varies depending on ambient light",
+	"brightness-auto-tune.config.main.tune_speed": "Tune Speed",
+	"brightness-auto-tune.config.main.tune_speed.0.0.tooltip.0": "Brightness won't change",
+	"brightness-auto-tune.config.main.tune_speed.1.0.tooltip.0": "Brightness instantly changes",
+	"brightness-auto-tune.config.main.tune_speed.tooltip.0": "Brightness changes gradually",
+	"brightness-auto-tune.config.title": "Brightness Auto Tune Config"
+}

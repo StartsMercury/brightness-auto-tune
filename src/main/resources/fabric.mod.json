@@ -20,6 +20,9 @@
 	"entrypoints": {
 		"client": [
 			"com.github.startsmercury.brightnessautotune.entrypoint.BrightnessAutoTuneClientMod"
+		],
+		"modmenu": [
+			"com.github.startsmercury.brightnessautotune.entrypoint.BrightnessAutoTuneModMenu"
 		]
 	},
 	"mixins": [
@@ -33,6 +36,7 @@
 		"java": ">=17"
 	},
 	"suggests": {
-		"another-mod": "*"
+		"cloth-config": ">=${cloth_config_version}",
+		"modmenu": ">=${modmenu_version}"
 	}
 }
