@@ -5,6 +5,8 @@ import static com.github.startsmercury.brightnessautotune.util.Nonnull.nonnull;
 import static java.lang.Runtime.getRuntime;
 import static net.fabricmc.api.EnvType.CLIENT;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -151,8 +153,8 @@ public class BrightnessAutoTuneClientMod implements ClientModInitializer {
 	}
 
 	public void loadConfig() {
-		try {
-			setConfig(getGson().fromJson(Files.newBufferedReader(getConfigPath()), Config.class));
+		try (final BufferedReader in = Files.newBufferedReader(getConfigPath())) {
+			setConfig(getGson().fromJson(in, Config.class));
 		} catch (final IOException | NullPointerException e) {
 			getLogger().error("Config load exception.", e);
 
@@ -190,8 +192,8 @@ public class BrightnessAutoTuneClientMod implements ClientModInitializer {
 	}
 
 	public void saveConfig() {
-		try {
-			getGson().toJson(getConfig(), Files.newBufferedWriter(getConfigPath()));
+		try (final BufferedWriter out = Files.newBufferedWriter(getConfigPath())) {
+			getGson().toJson(getConfig(), out);
 		} catch (final IOException ioe) {
 			getLogger().error("Config save exception.", ioe);
 		}
