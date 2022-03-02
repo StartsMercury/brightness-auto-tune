@@ -26,7 +26,8 @@
 		]
 	},
 	"mixins": [
-		"brightness-auto-tune.mixins.json"
+		"brightness-auto-tune.minecraft.mixins.json",
+		"brightness-auto-tune.sodium.mixins.json"
 	],
 
 	"depends": {
@@ -37,6 +38,7 @@
 	},
 	"suggests": {
 		"cloth-config": ">=${cloth_config_version}",
-		"modmenu": ">=${modmenu_version}"
+		"modmenu": ">=${modmenu_version}",
+		"sodium": ">=${sodium_version}"
 	}
 }

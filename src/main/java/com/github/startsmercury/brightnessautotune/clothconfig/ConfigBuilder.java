@@ -1,15 +1,18 @@
 package com.github.startsmercury.brightnessautotune.clothconfig;
 
 import static com.github.startsmercury.brightnessautotune.util.FormattedTextMessages.translatable;
+import static net.fabricmc.api.EnvType.CLIENT;
 
 import java.util.function.Consumer;
 
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import me.shedaniel.clothconfig2.impl.ConfigEntryBuilderImpl;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
+@Environment(CLIENT)
 public class ConfigBuilder implements me.shedaniel.clothconfig2.api.ConfigBuilder {
 	private final me.shedaniel.clothconfig2.api.ConfigBuilder delegate;
 

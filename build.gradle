@@ -42,6 +42,9 @@ dependencies {
 
 	// Mod Menu
 	modImplementation "com.terraformersmc:modmenu:${modmenu_version}"
+
+	// Sodium
+	modImplementation "maven.modrinth:sodium:mc${minecraft_version}-${sodium_version}"
 }
 
 // Performant Dependencies
@@ -68,15 +71,17 @@ dependencies {
 
 	// Smooth Boot
 	modRuntimeOnly 'curse.maven:smoothboot-415758:3549723'
-	
-	// Sodium
-	modRuntimeOnly 'maven.modrinth:sodium:mc1.18.1-0.4.0-alpha6'
 
 	// Starlight
 	modRuntimeOnly 'curse.maven:starlight-521783:3554912'
 
 	// TOML
 	runtimeOnly 'com.moandjiezana.toml:toml4j:0.7.2'
+}
+
+loom.runConfigs.configureEach {
+	vmArg '-Xmx1G'
+	property 'mixin.debug.export', 'true'
 }
 
 processResources {
@@ -87,6 +92,7 @@ processResources {
 		       'loader_version': loader_version,
 		       'minecraft_version': minecraft_version,
 		       'modmenu_version': modmenu_version,
+		       'sodium_version': sodium_version,
 		       'version': version
 	}
 }

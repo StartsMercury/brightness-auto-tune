@@ -5,6 +5,10 @@ public final class Clamp {
 		return value < minValue ? minValue : value > maxValue ? maxValue : value;
 	}
 
+	public static int clamp(final int minValue, final int value, final int maxValue) {
+		return value < minValue ? minValue : value > maxValue ? maxValue : value;
+	}
+
 	private Clamp() {
 	}
 }

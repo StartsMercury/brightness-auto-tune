@@ -1,6 +1,7 @@
 package com.github.startsmercury.brightnessautotune.clothconfig;
 
 import static com.github.startsmercury.brightnessautotune.util.FormattedTextMessages.translatable;
+import static net.fabricmc.api.EnvType.CLIENT;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,10 +12,12 @@ import org.jetbrains.annotations.Nullable;
 import it.unimi.dsi.fastutil.objects.ReferenceArrayList;
 import it.unimi.dsi.fastutil.objects.ReferenceList;
 import me.shedaniel.clothconfig2.api.AbstractConfigListEntry;
+import net.fabricmc.api.Environment;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.resources.ResourceLocation;
 
+@Environment(CLIENT)
 public class ConfigCategory implements me.shedaniel.clothconfig2.api.ConfigCategory {
 	private final me.shedaniel.clothconfig2.api.ConfigCategory delegate;
 

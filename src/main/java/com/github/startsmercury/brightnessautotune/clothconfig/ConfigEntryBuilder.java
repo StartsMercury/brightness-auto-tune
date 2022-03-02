@@ -1,6 +1,7 @@
 package com.github.startsmercury.brightnessautotune.clothconfig;
 
 import static com.github.startsmercury.brightnessautotune.util.FormattedTextMessages.translatable;
+import static net.fabricmc.api.EnvType.CLIENT;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,10 +37,12 @@ import me.shedaniel.clothconfig2.impl.builders.SubCategoryBuilder;
 import me.shedaniel.clothconfig2.impl.builders.TextDescriptionBuilder;
 import me.shedaniel.clothconfig2.impl.builders.TextFieldBuilder;
 import me.shedaniel.math.Color;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
 
+@Environment(CLIENT)
 public class ConfigEntryBuilder implements me.shedaniel.clothconfig2.api.ConfigEntryBuilder {
 	private static final ReferenceList<Component> appendTooltip(final ReferenceList<Component> tooltip,
 			final String key) {

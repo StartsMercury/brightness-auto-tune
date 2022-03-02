@@ -1,5 +1,8 @@
 {
 	"brightness-auto-tune.config.main": "Main",
+	"brightness-auto-tune.config.main.current_brightness": "Current Brightness",
+	"brightness-auto-tune.config.main.default_brightness": "Default Brightness",
+	"brightness-auto-tune.config.main.default_brightness.tooltip.0": "Used when the current brightness resets",
 	"brightness-auto-tune.config.main.least_brightness": "Least Brightness",
 	"brightness-auto-tune.config.main.least_brightness.tooltip.0": "Brightness to aproach when it is dark",
 	"brightness-auto-tune.config.main.most_brightness": "Most Brightness",
