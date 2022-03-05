@@ -1,0 +1,4 @@
+loom.runConfigs.configureEach {
+	vmArg '-Xmx1G'
+	property 'mixin.debug.export', 'true'
+}

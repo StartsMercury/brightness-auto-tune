@@ -41,15 +41,10 @@ dependencies {
 	modImplementation "maven.modrinth:sodium:mc${minecraft_version}-${sodium_version}"
 }
 
-apply from: 'gradle/performantDependencies.gradle'
-
-loom.runConfigs.configureEach {
-	vmArg '-Xmx1G'
-	property 'mixin.debug.export', 'true'
-}
-
-apply from: 'gradle/processResources.gradle'
 apply from: 'gradle/javaJar.gradle'
+apply from: 'gradle/loomRunConfigs.gradle'
+apply from: 'gradle/performantDependencies.gradle'
+apply from: 'gradle/processResources.gradle'
 apply from: 'gradle/tasks.gradle'
 //tasks.register 'modrinth', com.modrinth.minotaur.TaskModrinthUpload
 //apply from: 'gradle/publishing.gradle'
