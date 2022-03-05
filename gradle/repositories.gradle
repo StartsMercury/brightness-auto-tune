@@ -1,0 +1,8 @@
+repositories {
+	maven { url 'https://api.modrinth.com/maven'; content { includeGroup 'maven.modrinth' } }
+	maven { url 'https://cursemaven.com'; content { includeGroup 'curse.maven' } }
+	maven { url 'https://jitpack.io' }
+	maven { url 'https://maven.gegy.dev/' }
+	maven { url 'https://maven.shedaniel.me/' }
+	maven { url 'https://maven.terraformersmc.com/' }
+}

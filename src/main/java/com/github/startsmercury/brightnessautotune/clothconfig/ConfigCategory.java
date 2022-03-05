@@ -79,6 +79,10 @@ public class ConfigCategory implements me.shedaniel.clothconfig2.api.ConfigCateg
 		return this.delegate.getEntries();
 	}
 
+	public String getKey() {
+		return this.key;
+	}
+
 	@Override
 	public void removeCategory() {
 		this.delegate.removeCategory();
@@ -104,9 +108,5 @@ public class ConfigCategory implements me.shedaniel.clothconfig2.api.ConfigCateg
 	@Override
 	public void setDescription(@Nullable final Supplier<Optional<FormattedText[]>> p0) {
 		this.delegate.setDescription(p0);
-	}
-
-	public String getKey() {
-		return this.key;
 	}
 }

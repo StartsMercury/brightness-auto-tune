@@ -1,0 +1,49 @@
+apply from: 'gradle/functions.gradle'
+
+curseforge {
+	if (System.env.CURSEFORGE_API_KEY) {
+		apiKey = System.env.CURSEFORGE_API_KEY
+	}
+
+	project {
+		// id = '550997'
+		releaseType = System.env.RELEASE_TYPE ?: 'alpha'
+		changelogType = 'markdown'
+		changelog = System.env.CHANGELOG ?: 'No changelog provided'
+
+		addGameVersion minecraft_version
+		addGameVersion 'Fabric'
+
+		mainArtifact remapJar, {
+			displayName = "${titleCased System.env.RELEASE_TYPE ?: 'alpha'} ${nextVersion()} for Minecraft ${minecraft_version}"
+
+			relations {
+				optionalDependency 'cloth-config'
+			}
+		}
+
+		afterEvaluate {
+			uploadTask.dependsOn 'remapJar'
+		}
+	}
+
+	options {
+		forgeGradleIntegration = false
+	}
+}
+
+tasks.named 'modrinth', {
+	onlyIf {
+		token = System.env.MODRINTH_TOKEN
+	}
+
+	versionType = System.env.RELEASE_TYPE ?: 'alpha'
+	// projectId = '9gx5Xvc5'
+	versionNumber = nextVersion()
+	versionName = "${titleCased System.env.RELEASE_TYPE ?: 'alpha'} ${versionNumber} for Minecraft ${minecraft_version}"
+	changelog = System.env.CHANGELOG ?: 'No changelog provided'
+	uploadFile = remapJar
+
+	addGameVersion minecraft_version
+	addLoader 'fabric'
+}

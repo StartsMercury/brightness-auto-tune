@@ -2,11 +2,11 @@ package com.github.startsmercury.brightnessautotune.modmenu;
 
 import static net.fabricmc.api.EnvType.CLIENT;
 
+import com.github.startsmercury.brightnessautotune.client.BrightnessAutoTuneConfig;
 import com.github.startsmercury.brightnessautotune.clothconfig.ConfigBuilder;
 import com.github.startsmercury.brightnessautotune.clothconfig.ConfigCategory;
 import com.github.startsmercury.brightnessautotune.clothconfig.ConfigEntryBuilder;
 import com.github.startsmercury.brightnessautotune.entrypoint.BrightnessAutoTuneClientMod;
-import com.github.startsmercury.brightnessautotune.entrypoint.BrightnessAutoTuneClientMod.Config;
 
 import me.shedaniel.clothconfig2.gui.entries.BooleanListEntry;
 import me.shedaniel.clothconfig2.gui.entries.DoubleListEntry;
@@ -21,13 +21,14 @@ public class BrightnessAutoTuneClothConfigScreen {
 	public static Screen create(final Screen parent) {
 		final ConfigBuilder builder = new ConfigBuilder("brightness-auto-tune.config");
 		final BrightnessAutoTuneClientMod brightnessAutoTuneClient = BrightnessAutoTuneClientMod.getInstance();
-		final Config config = new Config(brightnessAutoTuneClient.getConfig());
+		final BrightnessAutoTuneConfig brightnessAutoTuneConfig = new BrightnessAutoTuneConfig(
+				brightnessAutoTuneClient.getConfig());
 
-		createMainCategory(config, builder);
+		createMainCategory(brightnessAutoTuneConfig, builder);
 
 		builder.setParentScreen(parent);
 		builder.setSavingRunnable(() -> {
-			brightnessAutoTuneClient.setConfig(config);
+			brightnessAutoTuneClient.setConfig(brightnessAutoTuneConfig);
 
 			brightnessAutoTuneClient.saveConfig();
 		});
@@ -36,13 +37,13 @@ public class BrightnessAutoTuneClothConfigScreen {
 		return builder.build();
 	}
 
-	protected static DoubleListEntry createCurrentBrightnessEntry(final Config config,
-			final ConfigEntryBuilder builder) {
+	protected static DoubleListEntry createCurrentBrightnessEntry(
+			final BrightnessAutoTuneConfig brightnessAutoTuneConfig, final ConfigEntryBuilder builder) {
 		@SuppressWarnings("resource")
 		final DoubleFieldBuilder itBuilder = builder.startDoubleField("current_brightness",
 				Minecraft.getInstance().options.gamma);
 
-		itBuilder.setDefaultValue(config::getDefaultBrightness);
+		itBuilder.setDefaultValue(brightnessAutoTuneConfig::getDefaultBrightness);
 		itBuilder.setMax(1.0D);
 		itBuilder.setMin(0.0D);
 		itBuilder.setSaveConsumer(gamma -> Minecraft.getInstance().options.gamma = gamma);
@@ -50,83 +51,91 @@ public class BrightnessAutoTuneClothConfigScreen {
 		return itBuilder.build();
 	}
 
-	protected static DoubleListEntry createDefaultBrightnessEntry(final Config config,
-			final ConfigEntryBuilder builder) {
+	protected static DoubleListEntry createDefaultBrightnessEntry(
+			final BrightnessAutoTuneConfig brightnessAutoTuneConfig, final ConfigEntryBuilder builder) {
 		final DoubleFieldBuilder itBuilder = builder.startDoubleField("default_brightness",
-				config.getDefaultBrightness());
+				brightnessAutoTuneConfig.getDefaultBrightness());
 
 		itBuilder.setDefaultValue(0.5D);
 		itBuilder.setMax(1.0D);
 		itBuilder.setMin(0.0D);
-		itBuilder.setSaveConsumer(config::setDefaultBrightness);
+		itBuilder.setSaveConsumer(brightnessAutoTuneConfig::setDefaultBrightness);
 
 		return itBuilder.build();
 	}
 
-	protected static DoubleListEntry createLeastBrightnessEntry(final Config config, final ConfigEntryBuilder builder) {
-		final DoubleFieldBuilder itBuilder = builder.startDoubleField("least_brightness", config.getLeastBrightness());
+	protected static DoubleListEntry createLeastBrightnessEntry(final BrightnessAutoTuneConfig brightnessAutoTuneConfig,
+			final ConfigEntryBuilder builder) {
+		final DoubleFieldBuilder itBuilder = builder.startDoubleField("least_brightness",
+				brightnessAutoTuneConfig.getLeastBrightness());
 
 		itBuilder.setDefaultValue(0.0D);
 		itBuilder.setMax(1.0D);
 		itBuilder.setMin(0.0D);
-		itBuilder.setSaveConsumer(config::setLeastBrightness);
+		itBuilder.setSaveConsumer(brightnessAutoTuneConfig::setLeastBrightness);
 
 		return itBuilder.build();
 	}
 
-	protected static ConfigCategory createMainCategory(final Config config, final ConfigBuilder builder) {
+	protected static ConfigCategory createMainCategory(final BrightnessAutoTuneConfig brightnessAutoTuneConfig,
+			final ConfigBuilder builder) {
 		final ConfigCategory it = builder.getOrCreateCategory("main");
 
-		it.addEntry(createCurrentBrightnessEntry(config, it.entryBuilder()));
-		it.addEntry(createTuneBrightnessEntry(config, it.entryBuilder()));
-		it.addEntry(createTuneSpeedEntry(config, it.entryBuilder()));
-		it.addEntry(createDefaultBrightnessEntry(config, it.entryBuilder()));
-		it.addEntry(createLeastBrightnessEntry(config, it.entryBuilder()));
-		it.addEntry(createMostBrightnessEntry(config, it.entryBuilder()));
+		it.addEntry(createCurrentBrightnessEntry(brightnessAutoTuneConfig, it.entryBuilder()));
+		it.addEntry(createTuneBrightnessEntry(brightnessAutoTuneConfig, it.entryBuilder()));
+		it.addEntry(createTuneSpeedEntry(brightnessAutoTuneConfig, it.entryBuilder()));
+		it.addEntry(createDefaultBrightnessEntry(brightnessAutoTuneConfig, it.entryBuilder()));
+		it.addEntry(createLeastBrightnessEntry(brightnessAutoTuneConfig, it.entryBuilder()));
+		it.addEntry(createMostBrightnessEntry(brightnessAutoTuneConfig, it.entryBuilder()));
 
 		return it;
 	}
 
-	protected static DoubleListEntry createMostBrightnessEntry(final Config config, final ConfigEntryBuilder builder) {
-		final DoubleFieldBuilder itBuilder = builder.startDoubleField("most_brightness", config.getMostBrightness());
+	protected static DoubleListEntry createMostBrightnessEntry(final BrightnessAutoTuneConfig brightnessAutoTuneConfig,
+			final ConfigEntryBuilder builder) {
+		final DoubleFieldBuilder itBuilder = builder.startDoubleField("most_brightness",
+				brightnessAutoTuneConfig.getMostBrightness());
 
 		itBuilder.setDefaultValue(1.0D);
 		itBuilder.setMax(1.0D);
 		itBuilder.setMin(0.0D);
-		itBuilder.setSaveConsumer(config::setMostBrightness);
+		itBuilder.setSaveConsumer(brightnessAutoTuneConfig::setMostBrightness);
 
 		return itBuilder.build();
 	}
 
-	protected static BooleanListEntry createTuneBrightnessEntry(final Config config, final ConfigEntryBuilder builder) {
+	protected static BooleanListEntry createTuneBrightnessEntry(final BrightnessAutoTuneConfig brightnessAutoTuneConfig,
+			final ConfigEntryBuilder builder) {
 		final BooleanToggleBuilder itBuilder = builder.startBooleanToggle("tune_brightness",
-				config.shouldTuneBrightness());
+				brightnessAutoTuneConfig.shouldTuneBrightness());
 
 		itBuilder.setDefaultValue(true);
 		itBuilder.setSaveConsumer(value -> {
 			final Minecraft minecraft = Minecraft.getInstance();
 
 			if (value) {
-				config.setBrightness(minecraft.options.gamma);
+				brightnessAutoTuneConfig.setBrightness(minecraft.options.gamma);
 
-				minecraft.options.gamma = config.getDefaultBrightness();
+				minecraft.options.gamma = brightnessAutoTuneConfig.getDefaultBrightness();
 			} else {
-				minecraft.options.gamma = config.getBrightness();
+				minecraft.options.gamma = brightnessAutoTuneConfig.getBrightness();
 			}
 
-			config.setTuneBrightness(value);
+			brightnessAutoTuneConfig.setTuneBrightness(value);
 		});
 
 		return itBuilder.build();
 	}
 
-	protected static DoubleListEntry createTuneSpeedEntry(final Config config, final ConfigEntryBuilder builder) {
-		final DoubleFieldBuilder itBuilder = builder.startDoubleField("tune_speed", config.getTuneMultiplier());
+	protected static DoubleListEntry createTuneSpeedEntry(final BrightnessAutoTuneConfig brightnessAutoTuneConfig,
+			final ConfigEntryBuilder builder) {
+		final DoubleFieldBuilder itBuilder = builder.startDoubleField("tune_speed",
+				brightnessAutoTuneConfig.getTuneMultiplier());
 
 		itBuilder.setDefaultValue(0.08D);
 		itBuilder.setMax(1.0D);
 		itBuilder.setMin(0.0D);
-		itBuilder.setSaveConsumer(config::setTuneMultiplier);
+		itBuilder.setSaveConsumer(brightnessAutoTuneConfig::setTuneMultiplier);
 
 		return itBuilder.build();
 	}

@@ -1,0 +1,27 @@
+dependencies {
+	// DynamicFPS
+	modRuntimeOnly 'maven.modrinth:dynamic-fps:v2.1.0'
+
+	// DataBreaker
+	modRuntimeOnly 'supercoder79:databreaker:0.2.8', {
+		exclude module: 'fabric-loader'
+	}
+
+	// FerriteCore
+	modRuntimeOnly 'curse.maven:ferritecore-459857:3550048'
+	
+	// JOML
+	runtimeOnly 'org.joml:joml:1.10.2'
+
+	// Ksyxis
+	modRuntimeOnly 'maven.modrinth:ksyxis:1.1'
+
+	// Smooth Boot
+	modRuntimeOnly 'curse.maven:smoothboot-415758:3549723'
+
+	// Starlight
+	modRuntimeOnly 'curse.maven:starlight-521783:3554912'
+
+	// TOML
+	runtimeOnly 'com.moandjiezana.toml:toml4j:0.7.2'
+}

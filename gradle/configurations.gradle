@@ -1,0 +1,41 @@
+apply from: 'gradle/functions.gradle'
+
+configurations {
+	includeApi
+	include                 .extendsFrom includeApi
+	       api              .extendsFrom includeApi
+
+	includeImplementation
+	include                 .extendsFrom includeImplementation
+	       implementation   .extendsFrom includeImplementation
+
+	includeModApi
+	include                 .extendsFrom includeModApi
+	       modApi           .extendsFrom includeModApi
+
+	includeModImplementation
+	include                 .extendsFrom includeModImplementation
+	       modImplementation.extendsFrom includeModImplementation
+}
+
+dependencies.ext {	
+	fabricModuleApi = { final def module, final def version = fabric_version ->
+		return dependencies.modApi(fabricApiModule(module, version))
+	}
+
+	fabricModuleImplementation = { final def module, final def version = fabric_version ->
+		return dependencies.modImplementation(fabricApiModule(module, version))
+	}
+	
+	includeFabricModuleApi = { final def module, final def version = fabric_version ->
+		return dependencies.includeModApi(fabricApiModule(module, version))
+	}
+	
+	includeFabricModuleImplementation = { final def module, final def version = fabric_version ->
+		return dependencies.includeModImplementation(fabricApiModule(module, version))
+	}
+
+	includeFabricModuleImplementation = { final def module, final def version = fabric_version ->
+		return dependencies.includeModImplementation(fabricApiModule(module, version))
+	}
+}
